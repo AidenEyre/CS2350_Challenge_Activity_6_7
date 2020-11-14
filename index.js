@@ -16,11 +16,16 @@
    
 */
 
+// Create a global style node and add it do the document head
+let style = document.createElement("style");
+document.head.appendChild(style);
+
+
 // When the page loads run these functions
 window.addEventListener("load", () => {
-    // Run this function on page load
-    divStyles();
-    daysBoarding();
+    // Set the divs in the checkbox class to display none
+    style.sheet.insertRule((".checkbox div{display: none;}"), 0);
+    daysBoarding(); // Run this function on page load
 
     // Run these elements everytime input changes
     document.getElementById("weight").oninput = checkKennelSize;
@@ -29,6 +34,11 @@ window.addEventListener("load", () => {
     document.getElementById("cute").onchange = totalCost;
     document.getElementById("trick").onchange = totalCost;
 });
+
+document.getElementById("sing").addEventListener("change", makeVisible("sing"));
+document.getElementById("cute").addEventListener("change", makeVisible("cute"));
+document.getElementById("trick").addEventListener("change", makeVisible("trick"));
+
 
 // Adds two decimal places after inputted letiables
 function formatNumber(val) {
@@ -109,14 +119,6 @@ function totalCost() {
     document.getElementById("totalCost").value = formatNumber(parseFloat(registerCost) + parseFloat(boardingCost));
 }
 
-// Sets the div display for each competition option to none
-function divStyles() {
-    // Create a style node
-    let style = document.createElement("style");
 
-    // Append the node to the html head
-    document.head.appendChild(style);
-
-    // Add style rules to the node
-    style.sheet.insertRule((".checkbox div{display: none;}"), 0);
+function makeVisible(id) {
 }
