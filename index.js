@@ -19,6 +19,7 @@
 // When the page loads run these functions
 window.addEventListener("load", () => {
     // Run this function on page load
+    divStyles();
     daysBoarding();
 
     // Run these elements everytime input changes
@@ -106,4 +107,16 @@ function totalCost() {
     document.getElementById("boardingCost").value = formatNumber(boardingCost);
     document.getElementById("registrationCost").value = formatNumber(registerCost);
     document.getElementById("totalCost").value = formatNumber(parseFloat(registerCost) + parseFloat(boardingCost));
+}
+
+// Sets the div display for each competition option to none
+function divStyles() {
+    // Create a style node
+    let style = document.createElement("style");
+
+    // Append the node to the html head
+    document.head.appendChild(style);
+
+    // Add style rules to the node
+    style.sheet.insertRule((".checkbox div{display: none;}"), 0);
 }
