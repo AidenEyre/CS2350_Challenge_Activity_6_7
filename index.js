@@ -12,8 +12,20 @@
    Function List
    =============
    
-   add functions here
-   
+       formatNumber() - This function just adds two decimal places to inputted variables.
+
+    checkKennelSize() - This function reads the input in the "Weight of pet?" box and adjusts
+                        the display in the "Kennel size" box accordingly.
+
+       daysBoarding() - This function reads the input in the "Days of boarding?" box and adjusts
+                        the display in the "Cost" box, next to it, accordingly.
+
+          totalCost() - This function calculates the values for the "Boarding", "Registration", and
+                        "Total" boxes with the calculated prices.
+
+        makeVisible() - This function takes in an id string and an index. With these variables it will
+                        make the divs in the "Wich Competitions?" section change from visible to not
+                        visible.
 */
 
 // Create a global style node and add it do the document head
@@ -96,7 +108,6 @@ function daysBoarding() {
     // Call totalCost() to update
     totalCost();
 }
-
 
 // Updates all the total costs at the bottom of the form
 function totalCost() {
