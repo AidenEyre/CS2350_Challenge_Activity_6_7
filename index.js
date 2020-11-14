@@ -18,18 +18,31 @@
 
 // When the page loads run these functions
 window.addEventListener("load", () => {
-    // Run this element everytime input changes
+    // Run this function on page load
+    daysBoarding();
+
+    // Run these elements everytime input changes
     document.getElementById("weight").oninput = checkKennelSize;
+    document.getElementById("days").oninput = daysBoarding;
 });
 
-// Function handles the pet weight and kennel size inputs
+// Adds two decimal places after inputted variables
+function formatNumber(val) {
+    // Call toLocaleString and have it give the number two decimal places
+    return val.toLocaleString(undefined, {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+    });
+}
+
+// Handles the pet weight and kennel size inputs
 function checkKennelSize() {
     // Initialize petWeight and kennelSize nodes
     var petWeight = document.getElementById("weight").value;
     var kennelSize = document.getElementById("size");
 
     // Run through a series of if statements to display a value in kennelSize
-    if(petWeight === NaN) {
+    if (petWeight === NaN) {
         kennelSize.value = "";
     } else if (petWeight <= 4) {
         kennelSize.value = "mini";
@@ -40,4 +53,21 @@ function checkKennelSize() {
     } else if (petWeight > 50) {
         kennelSize.value = "large";
     }
+}
+
+// Handles the days boarding and boardingFee inputs
+function daysBoarding() {
+    // Initialize days and boardingFee nodes
+    var days = document.getElementById("days").value;
+    var boardingFee = document.getElementById("boardingFee");
+
+    // If there is not input set days value to 0
+    if (days === "") {
+        days = "0";
+    }
+
+    // Calculate the value by converting the days value to an int and
+    // multiplying by 19.99. Then finally calling the formatNumber()
+    // function
+    boardingFee.value = formatNumber(parseInt(days) * 19.99);
 }
