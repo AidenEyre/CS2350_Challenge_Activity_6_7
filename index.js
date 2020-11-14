@@ -24,6 +24,9 @@ window.addEventListener("load", () => {
     // Run these elements everytime input changes
     document.getElementById("weight").oninput = checkKennelSize;
     document.getElementById("days").oninput = daysBoarding;
+    document.getElementById("sing").onchange = totalCost;
+    document.getElementById("cute").onchange = totalCost;
+    document.getElementById("trick").onchange = totalCost;
 });
 
 // Adds two decimal places after inputted letiables
@@ -69,11 +72,38 @@ function daysBoarding() {
     // Calculate the value by converting the days value to an int and
     // multiplying by 19.99. Then finally calling the formatNumber()
     // function
-    boardingFee.value = formatNumber(parseInt(days) * 19.99);
+    boardingFee.value = formatNumber(parseFloat(days) * 19.99);
+
+    // Call totalCost() to update
+    totalCost();
 }
 
 
+// Updates all the total costs at the bottom of the form
 function totalCost() {
+    // Initialize a few variables
     let registerCost = 0;
-    let 
+    let eventNum = 0;
+    let boardingCost = document.getElementById("boardingFee").value;
+
+    // If ID: sing, cute, or trick is checked ad ome to eventNum
+    if (document.getElementById("sing").checked) {
+        eventNum++;
+    }
+    
+    if (document.getElementById("cute").checked) {
+        eventNum++;
+    }
+    
+    if (document.getElementById("trick").checked) {
+        eventNum++;
+    }
+
+    // Calculate registraction cost
+    registerCost = eventNum*120;
+
+    // Update each input value
+    document.getElementById("boardingCost").value = formatNumber(boardingCost);
+    document.getElementById("registrationCost").value = formatNumber(registerCost);
+    document.getElementById("totalCost").value = formatNumber(parseFloat(registerCost) + parseFloat(boardingCost));
 }
