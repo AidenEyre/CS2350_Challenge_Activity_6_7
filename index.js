@@ -24,20 +24,28 @@ document.head.appendChild(style);
 // When the page loads run these functions
 window.addEventListener("load", () => {
     // Set the divs in the checkbox class to display none
-    style.sheet.insertRule((".checkbox div{display: none;}"), 0);
+    style.sheet.insertRule("#singAdd{display:none}", 0);
+    style.sheet.insertRule("#cuteAdd{display:none}", 1);
+    style.sheet.insertRule("#trickAdd{display:none}", 2);
     daysBoarding(); // Run this function on page load
 
     // Run these elements everytime input changes
     document.getElementById("weight").oninput = checkKennelSize;
     document.getElementById("days").oninput = daysBoarding;
-    document.getElementById("sing").onchange = totalCost;
-    document.getElementById("cute").onchange = totalCost;
-    document.getElementById("trick").onchange = totalCost;
+    // Use an arrow function to call two different functions in the onchange event
+    document.getElementById("sing").onchange = () => {
+        makeVisible("#sing", 0);
+        totalCost;
+    }
+    document.getElementById("cute").onchange = () => {
+        makeVisible("#cute", 1);
+        totalCost;
+    }
+    document.getElementById("trick").onchange = () => {
+        makeVisible("#trick", 2);
+        totalCost;
+    }
 });
-
-document.getElementById("sing").addEventListener("change", makeVisible("sing"));
-document.getElementById("cute").addEventListener("change", makeVisible("cute"));
-document.getElementById("trick").addEventListener("change", makeVisible("trick"));
 
 
 // Adds two decimal places after inputted letiables
@@ -119,6 +127,11 @@ function totalCost() {
     document.getElementById("totalCost").value = formatNumber(parseFloat(registerCost) + parseFloat(boardingCost));
 }
 
-
-function makeVisible(id) {
+// Changes the checkbox divs display from block to none
+function makeVisible(id, index) {
+    if(document.querySelector(id+":checked")) {
+        style.sheet.cssRules[index].style.display = "block";
+    } else {
+        style.sheet.cssRules[index].style.display = "none";
+    }
 }
