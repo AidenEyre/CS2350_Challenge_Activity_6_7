@@ -46,15 +46,15 @@ window.addEventListener("load", () => {
   // Use an arrow function to call two different functions in the onchange event
   document.getElementById("sing").onchange = () => {
     makeVisible("#sing", 0);
-    totalCost;
+    totalCost();
   };
   document.getElementById("cute").onchange = () => {
     makeVisible("#cute", 1);
-    totalCost;
+    totalCost();
   };
   document.getElementById("trick").onchange = () => {
     makeVisible("#trick", 2);
-    totalCost;
+    totalCost();
   };
 });
 
@@ -115,15 +115,15 @@ function totalCost() {
   let boardingCost = document.getElementById("boardingFee").value;
 
   // If ID: sing, cute, or trick is checked ad ome to eventNum
-  if (document.getElementById("sing").checked) {
+  if (document.querySelector("#sing:checked")) {
     eventNum++;
   }
 
-  if (document.getElementById("cute").checked) {
+  if (document.querySelector("#cute:checked")) {
     eventNum++;
   }
 
-  if (document.getElementById("trick").checked) {
+  if (document.querySelector("#trick:checked")) {
     eventNum++;
   }
 
