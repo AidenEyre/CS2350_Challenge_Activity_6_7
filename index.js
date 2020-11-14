@@ -26,7 +26,7 @@ window.addEventListener("load", () => {
     document.getElementById("days").oninput = daysBoarding;
 });
 
-// Adds two decimal places after inputted variables
+// Adds two decimal places after inputted letiables
 function formatNumber(val) {
     // Call toLocaleString and have it give the number two decimal places
     return val.toLocaleString(undefined, {
@@ -38,8 +38,8 @@ function formatNumber(val) {
 // Handles the pet weight and kennel size inputs
 function checkKennelSize() {
     // Initialize petWeight and kennelSize nodes
-    var petWeight = document.getElementById("weight").value;
-    var kennelSize = document.getElementById("size");
+    let petWeight = document.getElementById("weight").value;
+    let kennelSize = document.getElementById("size");
 
     // Run through a series of if statements to display a value in kennelSize
     if (petWeight === NaN) {
@@ -58,8 +58,8 @@ function checkKennelSize() {
 // Handles the days boarding and boardingFee inputs
 function daysBoarding() {
     // Initialize days and boardingFee nodes
-    var days = document.getElementById("days").value;
-    var boardingFee = document.getElementById("boardingFee");
+    let days = document.getElementById("days").value;
+    let boardingFee = document.getElementById("boardingFee");
 
     // If there is not input set days value to 0
     if (days === "") {
@@ -70,4 +70,10 @@ function daysBoarding() {
     // multiplying by 19.99. Then finally calling the formatNumber()
     // function
     boardingFee.value = formatNumber(parseInt(days) * 19.99);
+}
+
+
+function totalCost() {
+    let registerCost = 0;
+    let 
 }
